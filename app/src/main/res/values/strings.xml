@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="querystring">file:///android_res/raw/index.htm</string>
+	<string name="frase">next phrase</string>
+	<string name="style">random style</string>
+	<string name="reset">reset</string>
+	<string name="save">save and share</string>
+</resources>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<meta charset=UTF-8>
+<meta name=viewport content='width=device-width'>
+<style>
+@font-face{font-family:"Architects Daughter";src:url(file:///android_res/raw/architects.ttf);}
+@font-face{font-family:"Montserrat";src:url(file:///android_res/raw/montserrat.ttf);}
+@font-face{font-family:"Poppins";src:url(file:///android_res/raw/poppins.ttf);}
+@font-face{font-family:"RobotoMono";src:url(file:///android_res/raw/roboto.ttf);}
+@font-face{font-family:"Rubik";src:url(file:///android_res/raw/rubik.ttf);}
+@font-face{font-family:"Secular One";src:url(file:///android_res/raw/secular.ttf);}
+</style>
+<body style='background-color:#e1e1e1; margin:0px; height:100vh; display:flex; align-items:center; justify-content:center;'></body>
+<script src=file:///android_res/raw/citacoes.json></script>
+<script src=file:///android_res/raw/quotes.json></script>
+<script>
+lblbtn="random style";
+if(location=="file:///android_res/raw/index.htm?lng=pt")lblbtn="estilo aleatório";
+else citacoes=quotes;
+function pickOne(a){return a[parseInt(Math.random()*a.length)];}
+function inicio(){document.body.innerHTML="<div style='background-color:#cccccc; border:1px solid #777777; padding:12px 10px 16px 10px; border-radius:4px; text-align:right;'><textarea style='width:270px; height:80px; padding:12px; margin-bottom:10px; background-color:#ffffff;' id=frase>"+frase+"</textarea><br><a onclick='geraStilo();' style='background-color:#b8b8b8; text-decoration:none; border-radius:4px; padding:7px 14px; color:#222222; border:1px solid #555555; cursor:pointer;'>"+lblbtn+"</a></div>";}
+function geraStilo(){
+	if(document.getElementById('frase'))frase=document.getElementById('frase').value;
+	corner=pickOne([3,6,9,12,15,18]);
+	padding=pickOne([12,15,18,21,24,27,30]);
+	fontsize=pickOne([16,20,24,28,32,36]);
+	align=pickOne(["left","right","center"]);
+	capitalize=pickOne(["lowercase","uppercase","capitalize","none"]);
+	font=pickOne(["Architects Daughter","Montserrat","Poppins","RobotoMono","Rubik","Secular One"]);
+	foreground=pickOne(["9f838c","297373","ff8552","dc9e82","f9dc5c","175676","84dccf","441111","337733","5555aa","441144","777733","aa5511","115511","f6e8ea","312f2f","111144","773333","bb9966","ddbb88","bb99bb","ffddbb","e1e1e1"]);
+	if(Math.random()>.5){
+		color=pickOne(["e8e8e8","dddddd","b8b8b8"]);
+		background=pickOne(["#111111","#333333","#555555"]);
+	}
+	else{
+		color=pickOne(["080808","222222","383838"]);
+		background=pickOne(["#eeeeee","#cccccc","#aaaaaa"]);
+	}
+	borda=Math.random()>.7?1:0;
+	rotate=Math.random()>.8?1:0;
+	document.body.innerHTML="<div style='padding:0px 26px; width:100vw; height:100vh; background-color:#"+foreground+"; display:flex; align-items:center; justify-content:center;'><div style=\"max-width:400px; text-transform:"+capitalize+"; text-align:"+align+"; border-radius:"+corner+"px; padding:"+padding+"px; font-size:"+fontsize+"px; color:#"+color+"; background-color:"+(borda==1?"transparent":background)+"; border:"+(borda==1?"2px "+pickOne(["solid","dashed"])+" #"+color:"none")+"; font-family:'"+font+"'; "+(rotate?"transform:rotate("+pickOne(["354","6","12"])+"deg);":"")+"\">"+frase.replace(/\</g,'&lt;').replace(/\n/g,'<br>').replace(/  /g,' &nbsp;')+"</div></div>";
+}
+frase=pickOne(citacoes);
+geraStilo();
+</script>
+</html>
