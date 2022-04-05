@@ -18,10 +18,11 @@ lblbtn="random style";
 if(location=="file:///android_res/raw/index.htm?lng=pt")lblbtn="estilo aleatório";
 else citacoes=quotes;
 function pickOne(a){return a[parseInt(Math.random()*a.length)];}
-function inicio(){document.body.innerHTML="<div style='background-color:#cccccc; border:1px solid #777777; padding:12px 10px 16px 10px; border-radius:4px; text-align:right;'><textarea style='width:270px; height:80px; padding:12px; margin-bottom:10px; background-color:#ffffff;' id=frase>"+userfrase+"</textarea><br><a onclick='geraStilo();' style='background-color:#b8b8b8; text-decoration:none; border-radius:4px; padding:7px 14px; color:#222222; border:1px solid #555555; cursor:pointer;'>"+lblbtn+"</a></div>";}
-function geraStilo(){
+function inicio(){document.body.innerHTML="<div style='background-color:#cccccc; border:1px solid #777777; padding:12px 10px 16px 10px; border-radius:4px; text-align:right;'><textarea style='width:270px; height:80px; padding:12px; margin-bottom:10px; background-color:#ffffff;' id=frase>"+userfrase+"</textarea><br><a onclick='geraStilo(false);' style='background-color:#b8b8b8; text-decoration:none; border-radius:4px; padding:7px 14px; color:#222222; border:1px solid #555555; cursor:pointer;'>"+lblbtn+"</a></div>";}
+function geraStilo(randomfrase){
 	if(document.getElementById('frase'))frase=document.getElementById('frase').value;
 	if(document.getElementById('frase'))userfrase=document.getElementById('frase').value;
+	if(randomfrase)frase=pickOne(citacoes);
 	corner=pickOne([3,6,9,12,15,18]);
 	padding=pickOne([12,15,18,21,24,27,30]);
 	fontsize=pickOne([15,18,21,24,27,30,33]);
@@ -41,7 +42,6 @@ function geraStilo(){
 	document.body.innerHTML="<div style='padding:0px 34px; width:100vw; height:100vh; background-color:#"+foreground+"; display:flex; align-items:center; justify-content:center;'><div style=\"max-width:400px; text-transform:"+capitalize+"; text-align:"+align+"; border-radius:"+corner+"px; padding:"+padding+"px; font-size:"+fontsize+"px; color:#"+color+"; background-color:"+(borda==1?"transparent":background)+"; border:"+(borda==1?"2px "+pickOne(["solid","dashed"])+" #"+color:"none")+"; font-family:'"+font+"'; "+(Math.random()>.8?"transform:rotate("+pickOne(["346","353","7","14"])+"deg);":"")+"\">"+frase.replace(/\</g,'&lt;').replace(/\n/g,'<br>').replace(/  /g,' &nbsp;')+"</div></div>";
 }
 userfrase='';
-frase=pickOne(citacoes);
-geraStilo();
+geraStilo(true);
 </script>
 </html>

@@ -31,13 +31,13 @@ public class MainActivity extends Activity{
 		wv.loadUrl(getString(R.string.querystring));
 		ll.addView(wv);
 		ll.addView(geraBtn(getString(R.string.style),new View.OnClickListener(){public void onClick(View v){
-			wv.loadUrl("javascript:geraStilo();");
+			wv.loadUrl("javascript:geraStilo(false);");
 		}}));
 		ll.addView(geraBtn(getString(R.string.reset),new View.OnClickListener(){public void onClick(View v){
 			wv.loadUrl("javascript:inicio();");
 		}}));
 		ll.addView(geraBtn(getString(R.string.frase),new View.OnClickListener(){public void onClick(View v){
-			wv.loadUrl("javascript:frase=pickOne(citacoes);geraStilo();");
+			wv.loadUrl("javascript:geraStilo(true);");
 		}}));
 		ll.addView(geraBtn(getString(R.string.save),new View.OnClickListener(){public void onClick(View v){
 			wv.setDrawingCacheEnabled(true);
