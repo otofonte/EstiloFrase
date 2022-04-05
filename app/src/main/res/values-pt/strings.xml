@@ -3,6 +3,6 @@
 	<string name="querystring">file:///android_res/raw/index.htm?lng=pt</string>
 	<string name="frase">outra frase</string>
 	<string name="style">estilo aleatório</string>
-	<string name="reset">resetar</string>
+	<string name="reset">escrever</string>
 	<string name="save">salvar e compartilhar</string>
 </resources>
