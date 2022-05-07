@@ -20,26 +20,26 @@ else citacoes=quotes;
 function pickOne(a){return a[parseInt(Math.random()*a.length)];}
 function inicio(){document.body.innerHTML="<div style='background-color:#cccccc; border:1px solid #777777; padding:12px 10px 16px 10px; border-radius:4px; text-align:right;'><textarea style='width:270px; height:80px; padding:12px; margin-bottom:10px; background-color:#ffffff;' id=frase>"+userfrase+"</textarea><br><a onclick='geraStilo(false);' style='background-color:#b8b8b8; text-decoration:none; border-radius:4px; padding:7px 14px; color:#222222; border:1px solid #555555; cursor:pointer;'>"+lblbtn+"</a></div>";}
 function geraStilo(randomfrase){
-	if(document.getElementById('frase'))frase=document.getElementById('frase').value;
-	if(document.getElementById('frase'))userfrase=document.getElementById('frase').value;
-	if(randomfrase)frase=pickOne(citacoes);
-	corner=pickOne([3,6,9,12,15,18]);
-	padding=pickOne([12,15,18,21,24,27,30]);
-	fontsize=pickOne([15,18,21,24,27,30,33]);
-	align=pickOne(["left","right","center"]);
-	capitalize=pickOne(["lowercase","uppercase","capitalize","none"]);
-	font=pickOne(["Architects Daughter","Montserrat","Poppins","RobotoMono","Rubik","Secular One"]);
-	foreground=pickOne(["9f838c","297373","ff8552","dc9e82","f9dc5c","175676","84dccf","441111","337733","5555aa","441144","777733","aa5511","115511","f6e8ea","312f2f","111144","773333","bb9966","ddbb88","bb99bb","ffddbb","e1e1e1"]);
-	if(Math.random()>.5){
-		color=pickOne(["e8e8e8","dddddd","b8b8b8"]);
-		background=pickOne(["#111111","#333333","#555555"]);
-	}
-	else{
-		color=pickOne(["080808","222222","383838"]);
-		background=pickOne(["#eeeeee","#cccccc","#aaaaaa"]);
-	}
-	borda=Math.random()>.7?1:0;
-	document.body.innerHTML="<div style='padding:0px 34px; width:100vw; height:100vh; background-color:#"+foreground+"; display:flex; align-items:center; justify-content:center;'><div style=\"max-width:400px; text-transform:"+capitalize+"; text-align:"+align+"; border-radius:"+corner+"px; padding:"+padding+"px; font-size:"+fontsize+"px; color:#"+color+"; background-color:"+(borda==1?"transparent":background)+"; border:"+(borda==1?"2px "+pickOne(["solid","dashed"])+" #"+color:"none")+"; font-family:'"+font+"'; "+(Math.random()>.8?"transform:rotate("+pickOne(["346","353","7","14"])+"deg);":"")+"\">"+frase.replace(/\</g,'&lt;').replace(/\n/g,'<br>').replace(/  /g,' &nbsp;')+"</div></div>";
+    if(document.getElementById('frase'))frase=document.getElementById('frase').value;
+    if(document.getElementById('frase'))userfrase=document.getElementById('frase').value;
+    if(randomfrase)frase=pickOne(citacoes);
+    fontcolor=Math.random()>.5;
+    splash="<div style='padding:0px 34px; width:100vw; height:100vh;";
+    splash+="background-color:#"+pickOne(["9f838c","297373","ff8552","dc9e82","f9dc5c","175676","84dccf","441111","337733","5555aa","441144","777733","aa5511","115511","f6e8ea","312f2f","111144","773333","bb9966","ddbb88","bb99bb","ffddbb","e1e1e1"])+"; display:flex; align-items:center; justify-content:center;'><div style=\"max-width:400px;";
+    splash+="color:#"+(fontcolor?"000000":"ffffff")+";";
+    splash+="border-radius:"+pickOne([3,6,9,12,15,18])+"px;";
+    splash+="font-family:'"+pickOne(["Architects Daughter","Montserrat","Poppins","RobotoMono","Rubik","Secular One"])+"';";
+    splash+="font-size:"+pickOne([15,18,21,24,27,30,33])+"px;";
+    splash+="padding:"+pickOne([12,15,18,21,24,27,30])+"px;";
+    splash+="text-align:"+pickOne(["left","right","center"])+";";
+    splash+="text-transform:"+pickOne(["lowercase","uppercase","capitalize","none"])+";";
+    if(Math.random()<.7){
+        splash+="opacity:"+pickOne([".45",".6",".75"])+";";
+        splash+="background-color:"+(fontcolor?"#ffffff":"#000000")+";";
+    }
+    else if(Math.random()<.5)splash+="border:2px "+pickOne(["solid","dashed"])+" #"+(fontcolor?"000000":"ffffff")+";";
+    if(Math.random()>.8)splash+="transform:rotate("+pickOne(["346","353","7","14"])+"deg);";
+    document.body.innerHTML=splash+"\">"+frase.replace(/\</g,'&lt;').replace(/\n/g,'<br>').replace(/  /g,' &nbsp;')+"</div></div>";
 }
 userfrase='';
 geraStilo(true);

@@ -9,7 +9,7 @@ android {
         applicationId "source55.writeHere"
         minSdk 21
         targetSdk 32
-        versionCode 16
+        versionCode 17
         versionName "1.0"
     }
 }
