@@ -24,23 +24,25 @@ function geraStilo(randomfrase){
     if(document.getElementById('frase'))userfrase=document.getElementById('frase').value;
     if(randomfrase)frase=pickOne(citacoes);
     fontcolor=Math.random()>.5;
+    bgcolor=pickOne(["9f838c","297373","ff8552","dc9e82","f9dc5c","175676","84dccf","441111","337733","5555aa","441144","777733","aa5511","115511","f6e8ea","312f2f","111144","773333","bb9966","ddbb88","bb99bb","ffddbb","e1e1e1"]);
     splash="<div style='padding:0px 34px; width:100vw; height:100vh;";
-    splash+="background-color:#"+pickOne(["9f838c","297373","ff8552","dc9e82","f9dc5c","175676","84dccf","441111","337733","5555aa","441144","777733","aa5511","115511","f6e8ea","312f2f","111144","773333","bb9966","ddbb88","bb99bb","ffddbb","e1e1e1"])+"; display:flex; align-items:center; justify-content:center;'><div style=\"max-width:400px;";
-    splash+="color:#"+(fontcolor?"000000":"ffffff")+";";
+    splash+="background-color:#"+bgcolor+"; display:flex; align-items:center; justify-content:center;'><div style=\"max-width:400px;";
+    splash+="color:#"+(fontcolor?"222222":"dddddd")+";";
     splash+="border-radius:"+pickOne([3,6,9,12,15,18])+"px;";
     splash+="font-family:'"+pickOne(["Architects Daughter","Montserrat","Poppins","RobotoMono","Rubik","Secular One"])+"';";
     splash+="font-size:"+pickOne([15,18,21,24,27,30,33])+"px;";
-    splash+="padding:"+pickOne([12,15,18,21,24,27,30])+"px;";
-    splash+="text-align:"+pickOne(["left","right","center"])+";";
+    splash+="padding:"+pickOne([14,18,22,26,30,34,38])+"px;";
+    splash+="text-align:"+pickOne(["left","right","center","justify"])+";";
     splash+="text-transform:"+pickOne(["lowercase","uppercase","capitalize","none"])+";";
-    if(Math.random()<.7){
-        splash+="opacity:"+pickOne([".45",".6",".75"])+";";
-        splash+="background-color:"+(fontcolor?"#ffffff":"#000000")+";";
-    }
-    else if(Math.random()<.5)splash+="border:2px "+pickOne(["solid","dashed"])+" #"+(fontcolor?"000000":"ffffff")+";";
+    if(Math.random()<.7)splash+="background-color:#"+ototom(bgcolor[0])+bgcolor[1]+ototom(bgcolor[2])+bgcolor[3]+ototom(bgcolor[4])+bgcolor[5]+";";
+    else if(Math.random()<.5)splash+="border:2px "+pickOne(["solid","dashed"])+" #"+(fontcolor?"222222":"dddddd")+";";
     if(Math.random()>.8)splash+="transform:rotate("+pickOne(["346","353","7","14"])+"deg);";
     document.body.innerHTML=splash+"\">"+frase.replace(/\</g,'&lt;').replace(/\n/g,'<br>').replace(/  /g,' &nbsp;')+"</div></div>";
 }
+hexas="0123456789abcdef";
+hclara="44567889abccdeee";
+hescura="00012234566789aa";
+function ototom(c){for(x=0;x<16;x++)if(c==hexas[x])return fontcolor?hclara[x]:hescura[x];}
 userfrase='';
 geraStilo(true);
 </script>
